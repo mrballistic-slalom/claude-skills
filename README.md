@@ -1,6 +1,6 @@
-# slalom-claude-skills
+# claude-skills
 
-Internal, homegrown [Claude skills](https://www.anthropic.com/news/skills) built at Slalom. Most are written for **Claude chat** (claude.ai) and **Claude CoWork**, with a smaller number targeting Claude Code. Each skill is packaged as a single `.skill` archive and dropped under a category directory by practice area.
+A collection of homegrown [Claude skills](https://www.anthropic.com/news/skills). Most are written for **Claude chat** (claude.ai) and **Claude CoWork**, with a smaller number targeting Claude Code. Each skill is packaged as a single `.skill` archive and dropped under a category directory by practice area.
 
 ## Skills
 
