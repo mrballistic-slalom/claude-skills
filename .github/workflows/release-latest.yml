@@ -1,0 +1,27 @@
+name: Release latest skills
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Repack skill archives
+        run: bash scripts/pack.sh
+
+      - name: Update latest release
+        run: |
+          gh release delete latest --yes --cleanup-tag 2>/dev/null || true
+          gh release create latest \
+            --title "Latest" \
+            --notes "Auto-updated on every push to \`main\`. Download any \`.skill\` file and install it into Claude chat, CoWork, or Claude Code." \
+            $(find . -mindepth 2 -maxdepth 2 -name "*.skill" | sort)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Regenerate .skill archives from source before each commit.
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+echo "pre-commit: repacking skills..."
+bash "$REPO_ROOT/scripts/pack.sh"
+
+# Stage the regenerated archives so they're included in this commit.
+find "$REPO_ROOT" -mindepth 2 -maxdepth 2 -name "*.skill" | sort | while IFS= read -r f; do
+    git add "$f"
+done
+
+echo "pre-commit: done"
