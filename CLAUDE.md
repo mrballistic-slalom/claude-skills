@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A collection of internal, homegrown Claude skills authored at Slalom. Most skills here target **Claude chat (claude.ai)** and **Claude CoWork**; a smaller number target **Claude Code**. The packaging format is identical across all three — what differs is the install target and what tools/environment the skill can assume at runtime.
+A collection of homegrown Claude skills. Most skills here target **Claude chat (claude.ai)** and **Claude CoWork**; a smaller number target **Claude Code**. The packaging format is identical across all three — what differs is the install target and what tools/environment the skill can assume at runtime.
 
 Each skill ships as a single packaged `.skill` file (a zip archive following the standard Anthropic skill layout: `SKILL.md` with YAML frontmatter at the root, plus optional `references/`, `assets/`, scripts, etc.).
 
