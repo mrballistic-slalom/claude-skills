@@ -27,17 +27,34 @@ Skill triggers are described in each skill's `SKILL.md` frontmatter — peek at 
 unzip -p prd/prd-writer.skill prd-writer/SKILL.md | head -5
 ```
 
-## Contributing a new skill
+## Cloning or forking this repo
 
-See [`CLAUDE.md`](CLAUDE.md) for the layout conventions and SKILL.md frontmatter contract. Short version: create a source directory under the right category, validate in the target Claude surface, commit — the pre-commit hook packages the `.skill` archive automatically.
+If you only want to *use* a skill, you don't need any of this — just download the `.skill` file (see [Installing a skill](#installing-a-skill) above). These steps are for when you clone or fork the repo to edit or add skills.
 
-**One-time setup after cloning:**
+1. Fork the repo (via the GitHub "Fork" button), or clone it directly:
+
+   ```bash
+   git clone https://github.com/<your-account>/claude-skills.git
+   cd claude-skills
+   ```
+
+2. Arm the pre-commit hook — a **required one-time step per clone**:
+
+   ```bash
+   git config core.hooksPath .githooks
+   ```
+
+   This points git at the tracked [`.githooks/`](.githooks) directory so the pre-commit hook can regenerate `.skill` archives from source before each commit, keeping source trees and archives in sync. It's local-only git config (stored in `.git/config`, never committed), so every fresh clone or fork has to run it once.
+
+If you'd rather not use the hook, repack manually before committing instead:
 
 ```bash
-git config core.hooksPath .githooks
+bash scripts/pack.sh
 ```
 
-This wires up the pre-commit hook that regenerates `.skill` archives from source before each commit, so source and archives stay in sync.
+## Contributing a new skill
+
+See [`CLAUDE.md`](CLAUDE.md) for the layout conventions and SKILL.md frontmatter contract. Short version: create a source directory under the right category, validate in the target Claude surface, commit — the pre-commit hook packages the `.skill` archive automatically (assuming you armed it per [Cloning or forking this repo](#cloning-or-forking-this-repo) above).
 
 ## License
 
