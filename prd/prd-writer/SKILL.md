@@ -112,7 +112,7 @@ When the user asks for a TDD instead of (or in addition to) a PRD:
 If the request is missing critical information, ask before writing — don't assume:
 
 - What is the deployment target / cloud provider?
-- Who is the end user (internal Slalom team, client demo, production)?
+- Who is the end user (internal team, client demo, production)?
 - Does it use AI/LLM features? If so, what model and use case?
 - Is there an existing codebase to extend, or greenfield?
 - What is the timeline / MVP scope?
